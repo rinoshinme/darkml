@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="models\thresholder.cpp">
+      <Filter>models</Filter>
+    </ClCompile>
+    <ClCompile Include="models\linear_regression.cpp">
+      <Filter>models</Filter>
+    </ClCompile>
+    <ClCompile Include="core\weight_init.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\datasets\samples.cpp">
+      <Filter>core\datasets</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="models">
+      <UniqueIdentifier>{a9d6b36e-57fa-4880-aae4-783ffc28877a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{105bc332-714a-4b0d-9ecd-5bb9010ef66d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{005940cc-7781-48cf-b2a8-f50b3e1c39bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\datasets">
+      <UniqueIdentifier>{09a8067b-2198-4222-8549-ba8a93a155ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{a05c16dc-88dc-4838-a637-32cee8f083e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{95dab751-76c9-456c-9290-969a4d7d5423}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="models\linear_regression.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="core\array.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\matrix.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="models\decision_tree.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="models\thresholder.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="models\estimator.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="darkml.h" />
+    <ClInclude Include="core\common.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geometry.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\stat.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\throw_assert.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\random.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="models\knn.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="core\weight_init.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\datasets\dataset.h">
+      <Filter>core\datasets</Filter>
+    </ClInclude>
+    <ClInclude Include="core\datasets\mnist.h">
+      <Filter>core\datasets</Filter>
+    </ClInclude>
+    <ClInclude Include="core\datasets\samples.h">
+      <Filter>core\datasets</Filter>
+    </ClInclude>
+    <ClInclude Include="core\distance.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\test_linear_regression.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\test_basics.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="models\logistic_regression.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="core\datasets\classify_dataset.h">
+      <Filter>core\datasets</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\heap.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="doc\readme.md">
+      <Filter>doc</Filter>
+    </None>
+  </ItemGroup>
+</Project>
