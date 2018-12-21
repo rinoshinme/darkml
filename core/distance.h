@@ -10,10 +10,9 @@ namespace darkml
 	class BaseDistance
 	{
 	public:
-		BaseDistance();
-		virtual ~BaseDistance();
-
-		virtual T operator()(const Array<T>& a1, const Array<T>& a2);
+		BaseDistance() {}
+		virtual ~BaseDistance() {}
+		virtual T operator()(const Array<T>& a1, const Array<T>& a2) { return 0; }
 	};
 
 	template<typename T>
@@ -32,7 +31,8 @@ namespace darkml
 			{
 				for (int c = 0; c < a1.cols; ++c)
 				{
-					sum += (a1(r, c) - a2(r, c));
+					T diff = a1(r, c) - a2(r, c);
+					sum += diff * diff;
 				}
 			}
 			return std::sqrt(sum);

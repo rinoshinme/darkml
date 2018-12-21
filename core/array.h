@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 #include <ostream>
+#include <fstream>
 #include "common.h"
 #include "throw_assert.h"
 
@@ -25,7 +26,7 @@ namespace darkml
 
 	public:
 		Array(); // initialize an empty array
-		// Array(const Shape<2>& shape);
+		Array(const Shape<2>& shape);
 		Array(int rows, int cols);
 		Array(const Array<T>& array);
 		Array(const T* data, int rows, int cols);
@@ -36,6 +37,7 @@ namespace darkml
 		~Array() {}
 
 		void copyDataFrom(const Array<T>& array);
+		bool empty() const { return data_ptr == nullptr; }
 
 		Array<T> row(int r);
 		const Array<T> row(int r) const;
@@ -51,7 +53,7 @@ namespace darkml
 		const T& operator[](int index) const;
 
 		int intLabel(int r, int c) const; // return integer label values for 0.0f or 1.0f in classification
-		// Shape<2> shape() { return Shape<2>{rows, cols}; }
+		Shape<2> shape();
 
 		template<typename T2>
 		Array<T2> convert();
@@ -90,6 +92,9 @@ namespace darkml
 
 		void shuffle(const std::vector<int>& data);
 
+		void toTextFile(const std::string& file) const;
+		std::string toString() const;
+
 	private:
 		void copyMetaDataFrom(const Array<T>& array);
 	};
@@ -104,11 +109,9 @@ namespace darkml
 		cols = 0;
 	}
 
-	/*
 	template<typename T>
 	Array<T>::Array(const Shape<2>& shape)
 		: Array(shape[0], shape[1]) {}
-	*/
 
 	template<typename T>
 	Array<T>::Array(int rows, int cols)
@@ -596,6 +599,44 @@ namespace darkml
 			os << "\n";
 		}
 		return os;
+	}
+
+	template<typename T>
+	void Array<T>::toTextFile(const std::string& file) const
+	{
+		std::ofstream stream(file);
+		if (!stream.is_open())
+			return;
+
+		for (int r = 0; r < rows; ++r)
+		{
+			for (int c = 0; c < cols; ++c)
+				stream << (*this)(r, c) << " ";
+			stream << "\n";
+		}
+		stream.close();
+	}
+
+	template<typename T>
+	std::string Array<T>::toString() const
+	{
+		std::stringstream sts;
+		for (int r = 0; r < rows; ++r)
+		{
+			for (int c = 0; c < cols; ++c)
+				sts << (*this)(r, c) << " ";
+			sts << "\n";
+		}
+		return sts.str();
+	}
+
+	template<typename T>
+	Shape<2> Array<T>::shape()
+	{
+		Shape<2> shape;
+		shape[0] = rows;
+		shape[1] = cols;
+		return shape;
 	}
 }
 

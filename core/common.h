@@ -75,6 +75,21 @@ namespace darkml
 		int& operator[](int index) { return dims[index]; }
 		const int& operator[](int index) const { return dims[index]; }
 	};
+
+	// user defined pair structure and comparison
+	template<typename T1, typename T2>
+	struct KVPair
+	{
+		T1 key; // key is arbitrary
+		T2 val;	// val is for comparison
+	};
+
+	template<typename T1, typename T2>
+	bool operator<(const KVPair<T1, T2>& p1, const KVPair<T1, T2>& p2)
+	{
+		return p1.val < p2.val;
+	}
+
 }
 
 

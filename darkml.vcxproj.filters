@@ -103,6 +103,15 @@
     <ClInclude Include="utils\heap.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="tests\test_knn.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="core\preprocessing.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\dim_reduction.h">
+      <Filter>core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="doc\readme.md">

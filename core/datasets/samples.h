@@ -15,6 +15,11 @@ namespace darkml
 	Dataset<float> generateSampleRegression(int num_samples);
 
 
+	/*
+	 * generate 2d equi-variance gaussian mixtures
+	 */
+	Dataset<float> generateGaussianMixture(const std::vector<std::pair<float, float> >& mu, const std::vector<float>& sigma, const std::vector<int>& nums);
+
 }
 
 #endif

@@ -46,7 +46,8 @@ namespace darkml
 		// bool getBatchTarget(Array<T>& y);
 		void reset() { pos = 0; }
 
-	private:
+	public:
+		// random shuffle while keep data and targets correspondences
 		void shuffle();
 	};
 

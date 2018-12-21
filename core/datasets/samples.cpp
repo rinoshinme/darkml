@@ -24,4 +24,40 @@ namespace darkml
 		}
 		return dataset;
 	}
+
+	Dataset<float> generateGaussianMixture(const std::vector<std::pair<float, float> >& mu, const std::vector<float>& sigma, const std::vector<int>& nums)
+	{
+		size_t num_mu = mu.size();
+		size_t num_sigma = sigma.size();
+		size_t num_nums = nums.size();
+		throw_assert(num_mu == num_sigma && num_mu == num_nums, "size equal to number of classes");
+
+		int total_number = 0;
+		for (size_t k = 0; k < nums.size(); ++k)
+			total_number += nums[k];
+
+		Dataset<float> dataset;
+		dataset.data.resize(total_number, 2);
+		dataset.target.resize(total_number, 1);
+
+		Random rng;
+		int index = 0;
+		for (size_t k = 0; k < nums.size(); ++k)
+		{
+			float mu_x = mu[k].first;
+			float mu_y = mu[k].second;
+			float s = sigma[k];
+			for (int i = 0; i < nums[k]; ++i)
+			{
+				dataset.data(index, 0) = rng.randomGaussian<float>(mu_x, s);
+				dataset.data(index, 1) = rng.randomGaussian<float>(mu_y, s);
+				dataset.target[index] = static_cast<float>(k);
+				index += 1;
+			}
+		}
+		dataset.shuffle();
+		return dataset;
+	}
+
+
 }

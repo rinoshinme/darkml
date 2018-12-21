@@ -3,24 +3,41 @@
 
 #include "estimator.h"
 #include "../core/distance.h"
+#include "../core/common.h"
+#include "../utils/heap.h"
 
 namespace darkml
 {
-	template<typename DistanceMetric = EuclidDistance>
+	template<typename DistanceMetric = EuclidDistance<float> >
 	class KNNClassifier : public Estimator<float>
 	{
+	private:
+		// for topK finding
+		struct IndexDistancePair
+		{
+			int index;
+			float dist;
+
+			// find min in max-heap.
+			bool operator<(const IndexDistancePair& other)
+			{
+				return dist > other.dist;
+			}
+		};
+
 	private:
 		Array<float> data;
 		// targets are represented by floats 0.0f, 1.0f, ...
 		Array<float> target; // shape [n, 1]
 		int num_classes;
-		DistanceMetric metric;
+		DistanceMetric metric; // default construction
 		int k;
 
 	public:
-		KNNClassifier(int k) : k(k), num_classes(0) { }
+		KNNClassifier(int nclasses, int k = 1) : num_classes(nclasses), k(k) { }
 
 		void train(const Dataset<float>& dataset);
+
 		Array<float> predict(const Array<float>& x);
 
 		// not clear what is loss for knn, calculate accuracy instead
@@ -67,8 +84,8 @@ namespace darkml
 		int num_correct = 0;
 		for (int i = 0; i < num_samples; ++i)
 		{
-			int truth = nearestInteger(dataset.target[i]);
-			int pred = nearestInteger(target_pred[i]);
+			int truth = int(dataset.target[i]);
+			int pred = int(target_pred[i]);
 			if (truth == pred)
 				num_correct += 1;
 		}
@@ -96,15 +113,37 @@ namespace darkml
 	{
 		throw_assert(vec.rows == 1, "input should be single vector sample");
 		int num_training = data.rows;
-		std::vector<float> dists(num_training);
+		std::vector<IndexDistancePair> dists(num_training);
 		for (int i = 0; i < num_training; ++i)
 		{
-			dists.push_back(metric(vec, data.row(i)));
+			dists[i].index = i;
+			dists[i].dist = metric(vec, data.row(i));
 		}
 
 		// sort using heap sort
+		Heap<IndexDistancePair> heap(dists);
+		std::vector<IndexDistancePair> topK = heap.getTopK(k);
 
-		return -1;
+		// get index with max frequency
+		std::vector<int> hist(num_classes);
+		for (size_t k = 0; k < topK.size(); ++k)
+		{
+			int index = int(target[topK[k].index]);
+			hist[index] += 1;
+		}
+
+		int max_index = 0;
+		int max_val = 0;
+		for (size_t k = 0; k < num_classes; ++k)
+		{
+			if (hist[k] > max_val)
+			{
+				max_index = int(k);
+				max_val = hist[k];
+			}
+		}
+
+		return max_index;
 	}
 
 }

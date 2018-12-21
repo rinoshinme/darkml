@@ -9,7 +9,13 @@ int main()
 {
 	// test_array();
 	// test_dataset();
-	testLinearRegression();
+	// testLinearRegression();
+	// testHeap();
+	test_knn();
+
+	std::shared_ptr<int> ptr;
+	std::cout << ((ptr == nullptr) ? "true" : "false") << std::endl;
+
 	std::cout << "finished...\n";
 	std::getchar();
 }
