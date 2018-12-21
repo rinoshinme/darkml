@@ -10,6 +10,19 @@
 
 namespace darkml
 {
+	// other pointwise functions should inherit from these functions
+	template<typename T>
+	struct PointFunction1
+	{
+		virtual T operator()(T v) { return v; }
+	};
+
+	template<typename T1, typename T2>
+	struct PointFunction2
+	{
+		virtual T2 operator()(T1 v) { return T2(v); }
+	};
+
 	/* 2d data container
 	* basic data type for ml algorithms, so as convenient and powerful as possible */
 	template<typename T>
@@ -53,7 +66,7 @@ namespace darkml
 		const T& operator[](int index) const;
 
 		int intLabel(int r, int c) const; // return integer label values for 0.0f or 1.0f in classification
-		Shape<2> shape();
+		Shape<2> shape() const;
 
 		template<typename T2>
 		Array<T2> convert();
@@ -62,6 +75,7 @@ namespace darkml
 		void makePrivate(); 
 		// rather expensive operations due to memory allocation
 		void resize(int nrows, int ncols);
+		void resize(const Shape<2>& shape);
 
 		Array<T> subArray(const Rectangle& rect);
 		const Array<T> subArray(const Rectangle& rect) const;
@@ -94,6 +108,12 @@ namespace darkml
 
 		void toTextFile(const std::string& file) const;
 		std::string toString() const;
+
+		Array<T> apply(PointFunction1<T>& func) const;
+		Array<T>& apply_(PointFunction1<T>& func);
+		template<typename T2>
+		Array<T2> apply(PointFunction2<T, T2>& func) const;
+		
 
 	private:
 		void copyMetaDataFrom(const Array<T>& array);
@@ -248,12 +268,14 @@ namespace darkml
 	template<typename T>
 	T& Array<T>::operator()(int r, int c)
 	{
+		throw_assert(r >= 0 && r < rows && c >= 0 && c < cols, "index out of range");
 		return data_ptr->data[start + r * stride + c];
 	}
 
 	template<typename T>
 	const T& Array<T>::operator()(int r, int c) const
 	{
+		throw_assert(r >= 0 && r < rows && c >= 0 && c < cols, "index out of range");
 		return data_ptr->data[start + r * stride + c];
 	}
 
@@ -330,6 +352,12 @@ namespace darkml
 			Array<T> res(nrows, ncols);
 			*this = res;
 		}
+	}
+
+	template<typename T>
+	void Array<T>::resize(const Shape<2>& shape)
+	{
+		resize(shape[0], shape[1]);
 	}
 
 	template<typename T>
@@ -608,12 +636,8 @@ namespace darkml
 		if (!stream.is_open())
 			return;
 
-		for (int r = 0; r < rows; ++r)
-		{
-			for (int c = 0; c < cols; ++c)
-				stream << (*this)(r, c) << " ";
-			stream << "\n";
-		}
+		std::string str = toString();
+		stream << str;
 		stream.close();
 	}
 
@@ -631,12 +655,55 @@ namespace darkml
 	}
 
 	template<typename T>
-	Shape<2> Array<T>::shape()
+	Shape<2> Array<T>::shape() const
 	{
 		Shape<2> shape;
 		shape[0] = rows;
 		shape[1] = cols;
 		return shape;
+	}
+
+	template<typename T>
+	Array<T> Array<T>::apply(PointFunction1<T>& func) const
+	{
+		Array<T> result(this->shape());
+		for (int r = 0; r < rows; ++r)
+		{
+			for (int c = 0; c < cols; ++c)
+			{
+				result(r, c) = func((*this)(r, c));
+			}
+		}
+		return result;
+	}
+
+	template<typename T>
+	Array<T>& Array<T>::apply_(PointFunction1<T>& func)
+	{
+		for (int r = 0; r < rows; ++r)
+		{
+			for (int c = 0; c < cols; ++c)
+			{
+				T& val = (*this)(r, c);
+				val = func(val);
+			}
+		}
+		return *this;
+	}
+
+	template<typename T>
+	template<typename T2>
+	Array<T2> Array<T>::apply(PointFunction2<T, T2>& func) const
+	{
+		Array<T2> result(this->shape());
+		for (int r = 0; r < rows; ++r)
+		{
+			for (int c = 0; c < cols; ++c)
+			{
+				result(r, c) = func((*this)(r, c));
+			}
+		}
+		return result;
 	}
 }
 

@@ -19,21 +19,20 @@ namespace darkml
 		Array<float> bias;
 		float learn_rate_weight;
 		float learn_rate_bias;
-		int batch_size;
 
 	public:
 		LinearRegression(int epochs = 1);
 		LinearRegression(int epochs, float lr_w, float lr_b);
 		~LinearRegression() {}
 
-		void train(Dataset<float>& dataset);
-		Array<float> predict(const Array<float>& x);
-		float loss(const Dataset<float>& dataset);
+		virtual void train(Dataset<float>& dataset);
+		virtual Array<float> predict(const Array<float>& x);
+		virtual float loss(const Dataset<float>& dataset);
 
-	private:
-		void trainEpoch(Dataset<float>& dataset);
-		void trainBatch(const Array<float>& x, const Array<float>& y);
-		void initWeightAndBias(int num_input, int num_output);
+	protected:
+		virtual void trainEpoch(Dataset<float>& dataset);
+		virtual void trainBatch(const Array<float>& x, const Array<float>& y);
+		virtual void initWeightAndBias(int num_input, int num_output);
 	};
 }
 

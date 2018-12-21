@@ -11,7 +11,9 @@ int main()
 	// test_dataset();
 	// testLinearRegression();
 	// testHeap();
-	test_knn();
+	// test_knn();
+	// test_logistic();
+	test_array_apply();
 
 	std::shared_ptr<int> ptr;
 	std::cout << ((ptr == nullptr) ? "true" : "false") << std::endl;

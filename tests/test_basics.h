@@ -3,6 +3,20 @@
 
 namespace darkml
 {
+	struct Add1 : public PointFunction1 < float >
+	{
+		virtual float operator()(float val) { return val + 1.0f; }
+	};
+
+	inline void test_array_apply()
+	{
+		Array<float> arr(3, 3);
+		constantInit(arr, 0.1f);
+		std::cout << arr << std::endl;
+		arr = arr.apply(Add1());
+		std::cout << arr << std::endl;
+	}
+
 	inline void test_array()
 	{
 		Array<float> arr(5, 5);
@@ -49,22 +63,6 @@ namespace darkml
 				std::cout << dataset.target(r, c) << ", ";
 			std::cout << std::endl;
 		}
-	}
-
-	inline void testHeap()
-	{
-		std::vector<KVPair<int, double> > array(10);
-		for (int i = 0; i < 10; ++i)
-		{
-			array[i].key = 10 - i;
-			array[i].val = std::sin(1.0 * i);
-		}
-		Heap<KVPair<int, double> > heap(array);
-
-		std::vector<KVPair<int, double> > top5 = heap.getTopK(5);
-		for (size_t k = 0; k < top5.size(); ++k)
-			std::cout << top5[k].val << ", ";
-		std::cout << std::endl;
 	}
 }
 

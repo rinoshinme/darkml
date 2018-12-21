@@ -125,12 +125,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="core\datasets\samples.cpp" />
+    <ClCompile Include="core\geometry.cpp" />
     <ClCompile Include="core\weight_init.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="models\linear_regression.cpp" />
+    <ClCompile Include="models\logistic_regression.cpp" />
     <ClCompile Include="models\thresholder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="activation.h" />
     <ClInclude Include="core\array.h" />
     <ClInclude Include="core\common.h" />
     <ClInclude Include="core\datasets\classify_dataset.h" />
@@ -140,6 +143,7 @@
     <ClInclude Include="core\dim_reduction.h" />
     <ClInclude Include="core\distance.h" />
     <ClInclude Include="core\geometry.h" />
+    <ClInclude Include="core\math.h" />
     <ClInclude Include="core\matrix.h" />
     <ClInclude Include="core\preprocessing.h" />
     <ClInclude Include="core\random.h" />
@@ -156,6 +160,7 @@
     <ClInclude Include="tests\test_basics.h" />
     <ClInclude Include="tests\test_knn.h" />
     <ClInclude Include="tests\test_linear_regression.h" />
+    <ClInclude Include="tests\test_logistic_regression.h" />
     <ClInclude Include="utils\heap.h" />
   </ItemGroup>
   <ItemGroup>

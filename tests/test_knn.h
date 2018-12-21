@@ -6,7 +6,7 @@
 
 namespace darkml
 {
-	void test_knn()
+	inline void test_knn()
 	{
 		std::vector<std::pair<float, float> > means;
 		std::vector<float> sigmas;

@@ -76,15 +76,6 @@ namespace darkml
 		return sampleWithReplacement(data, n);
 	}
 
-	inline int nearestInteger(float v)
-	{
-		float d = v - floor(v);
-		if (d < 0.5f)
-			return int(v);
-		else
-			return int(v + 1);
-	}
-
 }
 
 

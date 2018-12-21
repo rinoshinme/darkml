@@ -5,8 +5,12 @@
 
 namespace darkml
 {
-	Matrixf22 getRotationMatrix2(float angle);
-	Matrixf33 getRotationMatrix3(float angle_x, float angle_y, float angle_z);
+	Matrix22f getRotationMatrix2(float a);
+
+	Matrix33f getRotationMatrixX(float a);
+	Matrix33f getRotationMatrixY(float a);
+	Matrix33f getRotationMatrixZ(float a);
+	Matrix33f getRotationMatrix3(float alpha, float beta, float gamma);
 
 }
 

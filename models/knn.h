@@ -17,11 +17,13 @@ namespace darkml
 		{
 			int index;
 			float dist;
+		};
 
-			// find min in max-heap.
-			bool operator<(const IndexDistancePair& other)
+		struct IndexDistancePairGreater
+		{
+			bool operator()(IndexDistancePair& p1, IndexDistancePair& p2)
 			{
-				return dist > other.dist;
+				return (p1.dist > p2.dist);
 			}
 		};
 
@@ -121,7 +123,7 @@ namespace darkml
 		}
 
 		// sort using heap sort
-		Heap<IndexDistancePair> heap(dists);
+		Heap<IndexDistancePair, IndexDistancePairGreater> heap(dists);
 		std::vector<IndexDistancePair> topK = heap.getTopK(k);
 
 		// get index with max frequency

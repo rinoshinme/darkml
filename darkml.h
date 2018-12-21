@@ -7,6 +7,7 @@
 #include "core/matrix.h"
 #include "core/random.h"
 #include "core/throw_assert.h"
+#include "core/math.h"
 #include "core/stat.h"
 #include "core/weight_init.h"
 #include "core/preprocessing.h"
@@ -29,5 +30,6 @@
 #include "tests/test_linear_regression.h"
 #include "tests/test_basics.h"
 #include "tests/test_knn.h"
+#include "tests/test_logistic_regression.h"
 
 #endif

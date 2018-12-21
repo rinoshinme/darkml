@@ -21,7 +21,7 @@ namespace darkml
 		Array<T> data;
 		Array<T> target;
 		int batch_size;
-		int pos;
+		mutable int pos;
 
 	public:
 		Dataset()

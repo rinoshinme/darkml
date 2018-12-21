@@ -9,6 +9,13 @@
 #include <math.h>
 // why #include <cmath> does not work for M_PI?
 
+// #define CPP0x
+
+#ifdef CPP0x
+#include <random>
+#include <chrono>
+#endif
+
 namespace darkml
 {
 	// random number generator
@@ -17,16 +24,23 @@ namespace darkml
 	private:
 		unsigned int min_val;
 		unsigned int max_val;
+#ifdef CPP0x
+		std::default_random_engine engine;
+#endif
 
 	public:
 		Random()
 		{
+#ifndef CPP0x
 			// use current time as seed
 			time_t t;
 			time(&t);
 			srand(static_cast<unsigned int>(t));
 			min_val = 0;
 			max_val = RAND_MAX;
+#else
+
+#endif
 		}
 
 		Random(int seed)
@@ -68,8 +82,6 @@ namespace darkml
 			else
 				return 0;
 		}
-
-
 
 		// permutation of [low ... high - 1]
 		std::vector<int> randomPermute(int low, int high)
