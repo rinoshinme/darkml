@@ -4,7 +4,7 @@
 #include "estimator.h"
 #include "../core/distance.h"
 #include "../core/common.h"
-#include "../utils/heap.h"
+#include "../core/heap.h"
 
 namespace darkml
 {

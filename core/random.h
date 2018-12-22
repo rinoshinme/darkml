@@ -19,6 +19,7 @@
 namespace darkml
 {
 	// random number generator
+	// should be implemented as Singleton
 	class Random
 	{
 	private:
@@ -39,27 +40,37 @@ namespace darkml
 			min_val = 0;
 			max_val = RAND_MAX;
 #else
-
+			engine.seed(static_cast<unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
+			min_val = engine.min();
+			max_val = engine.max();
 #endif
 		}
 
 		Random(int seed)
 		{
+#ifndef CPP0x
 			srand(seed);
 			min_val = 0;
 			max_val = RAND_MAX;
+#else
+			min_val = engine.min();
+			max_val = engine.max();
+			engine.seed(seed);
+#endif
 		}
 
 		// uniform distribution
 		int randomI(int low = 0, int high = 1)
 		{
-			return low + rand() % (high - low + 1);
+			auto r = getRandomInt();
+			return low + r % (high - low + 1);
 		}
 		
 		template<typename T>
 		T randomF(T low = T(0), T high = T(1))
 		{
-			return low + rand() * (high - low) / (max_val - min_val);
+			auto r = getRandomInt();
+			return low + r * (high - low) / (max_val - min_val);
 		}
 
 		// other distributions
@@ -91,6 +102,16 @@ namespace darkml
 				vec[k] = low + int(k);
 			std::random_shuffle(vec.begin(), vec.end());
 			return vec;
+		}
+
+	private:
+		inline unsigned int getRandomInt()
+		{
+#ifndef CPP0x
+			return rand();
+#else
+			return engine();
+#endif
 		}
 	};
 }

@@ -37,8 +37,8 @@
     <Filter Include="tests">
       <UniqueIdentifier>{a05c16dc-88dc-4838-a637-32cee8f083e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="utils">
-      <UniqueIdentifier>{95dab751-76c9-456c-9290-969a4d7d5423}</UniqueIdentifier>
+    <Filter Include="visualization">
+      <UniqueIdentifier>{9202f649-0fa4-4d5b-8c18-ce10f92af791}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -106,9 +106,6 @@
     <ClInclude Include="core\datasets\classify_dataset.h">
       <Filter>core\datasets</Filter>
     </ClInclude>
-    <ClInclude Include="utils\heap.h">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="tests\test_knn.h">
       <Filter>tests</Filter>
     </ClInclude>
@@ -121,11 +118,20 @@
     <ClInclude Include="core\math.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="activation.h">
-      <Filter>core</Filter>
-    </ClInclude>
     <ClInclude Include="tests\test_logistic_regression.h">
       <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="core\activation.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="models\perceptron.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="core\datasets\iris.h">
+      <Filter>core\datasets</Filter>
+    </ClInclude>
+    <ClInclude Include="core\heap.h">
+      <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

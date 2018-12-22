@@ -2,6 +2,7 @@
 #define DARKML_H
 
 #include "core/array.h"
+#include "core/activation.h"
 #include "core/common.h"
 #include "core/geometry.h"
 #include "core/matrix.h"
@@ -9,6 +10,7 @@
 #include "core/throw_assert.h"
 #include "core/math.h"
 #include "core/stat.h"
+#include "core/heap.h"
 #include "core/weight_init.h"
 #include "core/preprocessing.h"
 #include "core/dim_reduction.h"
@@ -17,8 +19,6 @@
 #include "core/datasets/classify_dataset.h"
 #include "core/datasets/mnist.h"
 #include "core/datasets/samples.h"
-
-#include "utils/heap.h"
 
 #include "models/estimator.h"
 #include "models/thresholder.h"

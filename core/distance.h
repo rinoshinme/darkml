@@ -12,7 +12,11 @@ namespace darkml
 	public:
 		BaseDistance() {}
 		virtual ~BaseDistance() {}
-		virtual T operator()(const Array<T>& a1, const Array<T>& a2) { return 0; }
+		virtual T operator()(const Array<T>& a1, const Array<T>& a2)
+		{
+			throw_assert(a1.rows == a2.rows && a1.cols == a2.cols, "two arrays should have same shape");
+			return 0;
+		}
 	};
 
 	template<typename T>
@@ -47,6 +51,7 @@ namespace darkml
 		~L1Distance() {}
 		T operator()(const Array<T>& a1, const Array<T>& a2)
 		{
+			throw_assert(a1.rows == a2.rows && a1.cols == a2.cols, "two inputs should have same shape");
 			T max_diff = T(0);
 			for (int r = 0; r < a1.rows; ++r)
 			{
@@ -58,6 +63,29 @@ namespace darkml
 				}
 			}
 			return max_diff;
+		}
+	};
+
+	// sum of distances in all element positions
+	template<typename T>
+	class ManhattanDistance : public BaseDistance < T >
+	{
+	public:
+		ManhattanDistance() {}
+		~ManhattanDistance() {}
+		T operator()(const Array<T>& a1, const Array<T>& a2)
+		{
+			throw_assert(a1.rows == a2.rows && a1.cols == a2.cols, "two inputs should have same shape");
+			T dist = 0;
+			for (int r = 0; r < a1.rows; ++r)
+			{
+				for (int c = 0; c < a1.cols; ++c)
+				{
+					T diff = a1(r, c) - a2(r, c);
+					dist += std::abs(diff);
+				}
+			}
+			return dist;
 		}
 	};
 

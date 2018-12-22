@@ -15,7 +15,7 @@ struct Matrix
 	T& operator()(int r, int c) { return data[r][c]; }
 	const T& operator()(int r, int c) const { return data[r][c]; }
 
-	T determinant() const;
+	// T determinant() const;
 
 	// matrix operations
 	Matrix<T, Rows, Cols>& operator+=(T val);
@@ -32,6 +32,9 @@ using Vec = Matrix<T, N, 1>;
 template<typename T, size_t N>
 using TVec = Matrix<T, 1, N>;
 
+template<typename T, size_t N>
+using SquareMatrix = Matrix < T, N, N > ;
+
 typedef Matrix<float, 2, 2> Matrix22f;
 typedef Matrix<float, 3, 3> Matrix33f;
 typedef Matrix<float, 4, 4> Matrix44f;
@@ -47,6 +50,19 @@ typedef Matrix<float, 1, 4> TVec4f;
 
 template<typename T, size_t R, size_t K, size_t C>
 Matrix<T, R, C> operator*(const Matrix<T, R, K>& matrix1, const Matrix<T, K, C>& matrix2);
+
+template<typename T>
+inline T determinant(const Matrix<T, 2, 2>& matrix)
+{
+	return matrix(0, 0) * matrix(1, 1) - matrix(1, 0) * matrix(0, 1);
+}
+
+template<typename T>
+T determinant(const Matrix<T, 3, 3>& matrix);
+
+template<typename T>
+T determinant(const Matrix<T, 4, 4>& matrix);
+
 
 //////////////////////////////////////////////////////////////////////////
 // matrix implementation

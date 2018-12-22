@@ -74,6 +74,14 @@ namespace darkml
 
 		int& operator[](int index) { return dims[index]; }
 		const int& operator[](int index) const { return dims[index]; }
+
+		bool operator==(const Shape<N>& shape)
+		{
+			for (int i = 0; i < N; ++i)
+				if (dims[i] != shape.dims[i])
+					return false;
+			return true;
+		}
 	};
 }
 

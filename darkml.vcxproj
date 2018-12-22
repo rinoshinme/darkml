@@ -133,16 +133,18 @@
     <ClCompile Include="models\thresholder.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="activation.h" />
+    <ClInclude Include="core\activation.h" />
     <ClInclude Include="core\array.h" />
     <ClInclude Include="core\common.h" />
     <ClInclude Include="core\datasets\classify_dataset.h" />
     <ClInclude Include="core\datasets\dataset.h" />
+    <ClInclude Include="core\datasets\iris.h" />
     <ClInclude Include="core\datasets\mnist.h" />
     <ClInclude Include="core\datasets\samples.h" />
     <ClInclude Include="core\dim_reduction.h" />
     <ClInclude Include="core\distance.h" />
     <ClInclude Include="core\geometry.h" />
+    <ClInclude Include="core\heap.h" />
     <ClInclude Include="core\math.h" />
     <ClInclude Include="core\matrix.h" />
     <ClInclude Include="core\preprocessing.h" />
@@ -156,12 +158,12 @@
     <ClInclude Include="models\knn.h" />
     <ClInclude Include="models\linear_regression.h" />
     <ClInclude Include="models\logistic_regression.h" />
+    <ClInclude Include="models\perceptron.h" />
     <ClInclude Include="models\thresholder.h" />
     <ClInclude Include="tests\test_basics.h" />
     <ClInclude Include="tests\test_knn.h" />
     <ClInclude Include="tests\test_linear_regression.h" />
     <ClInclude Include="tests\test_logistic_regression.h" />
-    <ClInclude Include="utils\heap.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="doc\readme.md" />

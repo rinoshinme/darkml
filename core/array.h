@@ -58,7 +58,8 @@ namespace darkml
 		const Array<T> col(int c) const;
 		Array<T> batch(int start, int offset);
 		const Array<T> batch(int start, int offset) const;
-
+		
+		inline int index(int r, int c) const; // { return (start + r * stride + c); }
 		T& operator()(int r, int c);
 		const T& operator()(int r, int c) const;
 		// only for single row or column
@@ -71,11 +72,15 @@ namespace darkml
 		template<typename T2>
 		Array<T2> convert();
 
-		// allocate new memory
+		// make sure memory is not shared with other arrays
 		void makePrivate(); 
-		// rather expensive operations due to memory allocation
+		// rather expensive operations due to memory reallocation
 		void resize(int nrows, int ncols);
+		inline void reshape(int nrows, int ncols) { resize(nrows, ncols); }
 		void resize(const Shape<2>& shape);
+		inline void reshape(const Shape<2>& shape) { resize(shape); }
+
+		inline int length() const;
 
 		Array<T> subArray(const Rectangle& rect);
 		const Array<T> subArray(const Rectangle& rect) const;
@@ -266,6 +271,13 @@ namespace darkml
 	}
 
 	template<typename T>
+	int Array<T>::index(int r, int c) const
+	{
+		throw_assert(r >= 0 && r < rows && c >= 0 && c < cols, "index out of range");
+		return start + r * stride + c;
+	}
+
+	template<typename T>
 	T& Array<T>::operator()(int r, int c)
 	{
 		throw_assert(r >= 0 && r < rows && c >= 0 && c < cols, "index out of range");
@@ -358,6 +370,16 @@ namespace darkml
 	void Array<T>::resize(const Shape<2>& shape)
 	{
 		resize(shape[0], shape[1]);
+	}
+
+	template<typename T>
+	int Array<T>::length() const
+	{
+		throw_assert(rows == 1 || cols == 1, "Array should be 1 dimension");
+		if (rows == 1)
+			return cols;
+		else
+			return rows;
 	}
 
 	template<typename T>
