@@ -4,8 +4,8 @@
 #ifndef DARKML_PREPROCESSING_H
 #define DARKML_PREPROCESSING_H
 
-#include "array.h"
-#include "stat.h"
+#include "../core/array.h"
+#include "../stat/stat.h"
 
 namespace darkml
 {

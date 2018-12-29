@@ -1,5 +1,5 @@
 #include "linear_regression.h"
-#include "../core/weight_init.h"
+#include "weight_init.h"
 
 namespace darkml
 {

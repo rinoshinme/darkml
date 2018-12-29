@@ -1,5 +1,5 @@
 #include "weight_init.h"
-#include "random.h"
+#include "../core/random.h"
 
 namespace darkml
 {

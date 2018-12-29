@@ -1,7 +1,7 @@
 #ifndef DARKML_WEIGHT_INIT_H
 #define DARKML_WEIGHT_INIT_H
 
-#include "array.h"
+#include "../core/array.h"
 
 namespace darkml
 {

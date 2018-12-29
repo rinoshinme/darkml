@@ -3,7 +3,7 @@
 
 #include "../core/array.h"
 #include "../core/throw_assert.h"
-#include "../core/datasets/dataset.h"
+#include "../dataset/dataset.h"
 
 namespace darkml
 {

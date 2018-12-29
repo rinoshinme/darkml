@@ -4,6 +4,14 @@
 namespace darkml
 {
 	// activation functions
+
+	// sigmoid
+	// softmax
+	// convertToProbabilityDistribution
+	// cross-entropy
+	// KL divergence
+
+
 }
 
 #endif

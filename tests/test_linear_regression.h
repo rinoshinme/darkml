@@ -2,7 +2,7 @@
 #define DARKML_TEST_LINEAR_REGRESSION_H
 
 #include "../models/linear_regression.h"
-#include "../core/datasets/samples.h"
+#include "../dataset/samples.h"
 #include <iostream>
 
 namespace darkml

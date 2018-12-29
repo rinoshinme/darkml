@@ -2,13 +2,16 @@
 #define DARKML_STAT_H
 
 /* statistics functions */
-#include "array.h"
+#include "../core/array.h"
 #include <random>
 
 namespace darkml
 {
+	// mean, variance, covariance, correlation (normalized covariance).
+
+	// information theory.
+
 	// each row in Array represents a sample vector
-	
 	template<typename T>
 	Array<T> featureMean(const Array<T>& xs)
 	{
@@ -75,6 +78,9 @@ namespace darkml
 		int n = data.rows;
 		return sampleWithReplacement(data, n);
 	}
+
+	// monte carlo simulation...
+
 
 }
 

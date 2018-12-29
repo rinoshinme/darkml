@@ -1,8 +1,8 @@
 #ifndef DARKML_DATASET_H
 #define DARKML_DATASET_H
 
-#include "../array.h"
-#include "../random.h"
+#include "../core/array.h"
+#include "../core/random.h"
 
 namespace darkml
 {

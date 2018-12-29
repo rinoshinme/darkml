@@ -2,7 +2,7 @@
 #define DARKML_TEST_KNN_H
 
 #include "../models/knn.h"
-#include "../core/datasets/samples.h"
+#include "../dataset/samples.h"
 
 namespace darkml
 {

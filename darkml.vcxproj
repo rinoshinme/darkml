@@ -116,6 +116,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -124,49 +125,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="core\datasets\samples.cpp" />
     <ClCompile Include="core\geometry.cpp" />
-    <ClCompile Include="core\weight_init.cpp" />
+    <ClCompile Include="dataset\samples.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="models\linear_regression.cpp" />
     <ClCompile Include="models\logistic_regression.cpp" />
     <ClCompile Include="models\thresholder.cpp" />
+    <ClCompile Include="models\weight_init.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="core\activation.h" />
     <ClInclude Include="core\array.h" />
     <ClInclude Include="core\common.h" />
-    <ClInclude Include="core\datasets\classify_dataset.h" />
-    <ClInclude Include="core\datasets\dataset.h" />
-    <ClInclude Include="core\datasets\iris.h" />
-    <ClInclude Include="core\datasets\mnist.h" />
-    <ClInclude Include="core\datasets\samples.h" />
-    <ClInclude Include="core\dim_reduction.h" />
-    <ClInclude Include="core\distance.h" />
     <ClInclude Include="core\geometry.h" />
     <ClInclude Include="core\heap.h" />
     <ClInclude Include="core\math.h" />
     <ClInclude Include="core\matrix.h" />
-    <ClInclude Include="core\preprocessing.h" />
     <ClInclude Include="core\random.h" />
-    <ClInclude Include="core\stat.h" />
+    <ClInclude Include="core\string_compare.h" />
     <ClInclude Include="core\throw_assert.h" />
-    <ClInclude Include="core\weight_init.h" />
     <ClInclude Include="darkml.h" />
+    <ClInclude Include="dataset\classify_dataset.h" />
+    <ClInclude Include="dataset\dataset.h" />
+    <ClInclude Include="dataset\iris.h" />
+    <ClInclude Include="dataset\mnist.h" />
+    <ClInclude Include="dataset\samples.h" />
+    <ClInclude Include="models\activation.h" />
     <ClInclude Include="models\decision_tree.h" />
+    <ClInclude Include="models\distance.h" />
     <ClInclude Include="models\estimator.h" />
+    <ClInclude Include="models\ising.h" />
     <ClInclude Include="models\knn.h" />
     <ClInclude Include="models\linear_regression.h" />
     <ClInclude Include="models\logistic_regression.h" />
     <ClInclude Include="models\perceptron.h" />
+    <ClInclude Include="models\stochastic.h" />
     <ClInclude Include="models\thresholder.h" />
+    <ClInclude Include="models\weight_init.h" />
+    <ClInclude Include="preprocessing\dim_reduction.h" />
+    <ClInclude Include="preprocessing\preprocessing.h" />
+    <ClInclude Include="stat\stat.h" />
     <ClInclude Include="tests\test_basics.h" />
     <ClInclude Include="tests\test_knn.h" />
     <ClInclude Include="tests\test_linear_regression.h" />
     <ClInclude Include="tests\test_logistic_regression.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="doc\readme.md" />
+    <None Include="darkml.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

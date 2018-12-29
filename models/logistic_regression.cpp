@@ -1,6 +1,6 @@
 #include "logistic_regression.h"
 #include "../core/math.h"
-#include "../core/weight_init.h"
+#include "weight_init.h"
 
 namespace darkml
 {

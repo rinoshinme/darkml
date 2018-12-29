@@ -88,7 +88,6 @@ namespace darkml
 			return dist;
 		}
 	};
-
 }
 
 #endif

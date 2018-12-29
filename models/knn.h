@@ -2,7 +2,7 @@
 #define DARKML_KNN_H
 
 #include "estimator.h"
-#include "../core/distance.h"
+#include "distance.h"
 #include "../core/common.h"
 #include "../core/heap.h"
 

@@ -59,13 +59,6 @@ namespace darkml
 				dims[i] = 0;
 		}
 
-		/*
-		Shape(initializer_list& vec)
-		{
-			std::copy(vec.begin(), vec.end(), &dims[0]);
-		}
-		*/
-
 		Shape(const int* d)
 		{
 			for (int i = 0; i < N; ++i)

@@ -2,7 +2,7 @@
 #define DARKML_TEST_LOGISTIC_REGRESSION_H
 
 #include "../models/logistic_regression.h"
-#include "../core/datasets/samples.h"
+#include "../dataset/samples.h"
 
 namespace darkml
 {

@@ -8,17 +8,17 @@
     <ClCompile Include="models\linear_regression.cpp">
       <Filter>models</Filter>
     </ClCompile>
-    <ClCompile Include="core\weight_init.cpp">
-      <Filter>core</Filter>
-    </ClCompile>
-    <ClCompile Include="core\datasets\samples.cpp">
-      <Filter>core\datasets</Filter>
-    </ClCompile>
     <ClCompile Include="models\logistic_regression.cpp">
       <Filter>models</Filter>
     </ClCompile>
     <ClCompile Include="core\geometry.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="dataset\samples.cpp">
+      <Filter>dataset</Filter>
+    </ClCompile>
+    <ClCompile Include="models\weight_init.cpp">
+      <Filter>models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -28,17 +28,20 @@
     <Filter Include="core">
       <UniqueIdentifier>{105bc332-714a-4b0d-9ecd-5bb9010ef66d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="doc">
-      <UniqueIdentifier>{005940cc-7781-48cf-b2a8-f50b3e1c39bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\datasets">
-      <UniqueIdentifier>{09a8067b-2198-4222-8549-ba8a93a155ce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="tests">
       <UniqueIdentifier>{a05c16dc-88dc-4838-a637-32cee8f083e2}</UniqueIdentifier>
     </Filter>
     <Filter Include="visualization">
       <UniqueIdentifier>{9202f649-0fa4-4d5b-8c18-ce10f92af791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataset">
+      <UniqueIdentifier>{0610aece-e2fe-4e68-afbb-1b678fc2b7d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stat">
+      <UniqueIdentifier>{0f474175-b71f-48c6-905e-06652061ca35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="preprocessing">
+      <UniqueIdentifier>{053fdd36-5004-44f0-8096-6afc835f77d5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,9 +70,6 @@
     <ClInclude Include="core\geometry.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="core\stat.h">
-      <Filter>core</Filter>
-    </ClInclude>
     <ClInclude Include="core\throw_assert.h">
       <Filter>core</Filter>
     </ClInclude>
@@ -78,21 +78,6 @@
     </ClInclude>
     <ClInclude Include="models\knn.h">
       <Filter>models</Filter>
-    </ClInclude>
-    <ClInclude Include="core\weight_init.h">
-      <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="core\datasets\dataset.h">
-      <Filter>core\datasets</Filter>
-    </ClInclude>
-    <ClInclude Include="core\datasets\mnist.h">
-      <Filter>core\datasets</Filter>
-    </ClInclude>
-    <ClInclude Include="core\datasets\samples.h">
-      <Filter>core\datasets</Filter>
-    </ClInclude>
-    <ClInclude Include="core\distance.h">
-      <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="tests\test_linear_regression.h">
       <Filter>tests</Filter>
@@ -103,17 +88,8 @@
     <ClInclude Include="models\logistic_regression.h">
       <Filter>models</Filter>
     </ClInclude>
-    <ClInclude Include="core\datasets\classify_dataset.h">
-      <Filter>core\datasets</Filter>
-    </ClInclude>
     <ClInclude Include="tests\test_knn.h">
       <Filter>tests</Filter>
-    </ClInclude>
-    <ClInclude Include="core\preprocessing.h">
-      <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="core\dim_reduction.h">
-      <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="core\math.h">
       <Filter>core</Filter>
@@ -121,22 +97,56 @@
     <ClInclude Include="tests\test_logistic_regression.h">
       <Filter>tests</Filter>
     </ClInclude>
-    <ClInclude Include="core\activation.h">
-      <Filter>core</Filter>
-    </ClInclude>
     <ClInclude Include="models\perceptron.h">
       <Filter>models</Filter>
-    </ClInclude>
-    <ClInclude Include="core\datasets\iris.h">
-      <Filter>core\datasets</Filter>
     </ClInclude>
     <ClInclude Include="core\heap.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="models\stochastic.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="models\ising.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="core\string_compare.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="dataset\classify_dataset.h">
+      <Filter>dataset</Filter>
+    </ClInclude>
+    <ClInclude Include="dataset\dataset.h">
+      <Filter>dataset</Filter>
+    </ClInclude>
+    <ClInclude Include="dataset\iris.h">
+      <Filter>dataset</Filter>
+    </ClInclude>
+    <ClInclude Include="dataset\mnist.h">
+      <Filter>dataset</Filter>
+    </ClInclude>
+    <ClInclude Include="dataset\samples.h">
+      <Filter>dataset</Filter>
+    </ClInclude>
+    <ClInclude Include="models\activation.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="models\weight_init.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="stat\stat.h">
+      <Filter>stat</Filter>
+    </ClInclude>
+    <ClInclude Include="preprocessing\dim_reduction.h">
+      <Filter>preprocessing</Filter>
+    </ClInclude>
+    <ClInclude Include="preprocessing\preprocessing.h">
+      <Filter>preprocessing</Filter>
+    </ClInclude>
+    <ClInclude Include="models\distance.h">
+      <Filter>models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="doc\readme.md">
-      <Filter>doc</Filter>
-    </None>
+    <None Include="darkml.md" />
   </ItemGroup>
 </Project>
